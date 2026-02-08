@@ -1,0 +1,421 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+    background: #0a0a0a;
+    color: #ffffff;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Lamp glow effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3000px;
+    height: 1600px;
+    background: radial-gradient(
+        ellipse 3000px 1600px at 50% 0%, 
+        rgba(255, 255, 255, 0.25) 0%, 
+        rgba(255, 255, 255, 0.15) 25%, 
+        rgba(255, 255, 255, 0.08) 45%, 
+        rgba(255, 255, 255, 0.03) 60%,
+        transparent 80%
+    );
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(120px);
+}
+
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 30px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 36px;
+    height: 36px;
+    background: #ffffff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #0a0a0a;
+    font-size: 18px;
+}
+
+.logo-text h1 {
+    font-size: 16px;
+    font-weight: 590;
+    letter-spacing: -0.022em;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+}
+
+.logo-text p {
+    font-size: 12px;
+    color: #888;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+}
+
+.nav-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-center a {
+    padding: 10px 24px;
+    text-decoration: none;
+    color: #888;
+    font-size: 14px;
+    font-weight: 590;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    letter-spacing: -0.016em;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+}
+
+.nav-center a.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.nav-center a:hover {
+    color: #ffffff;
+}
+
+.nav-right {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-right a {
+    color: #888;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    text-transform: lowercase;
+}
+
+.nav-right a:hover {
+    color: #ffffff;
+}
+
+/* First Hero - Generous Yeh Style */
+.hero-generous {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 50px;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.hero-generous h1 {
+    font-size: 96px;
+    font-weight: 590;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    margin-bottom: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+}
+
+.hero-generous h2 {
+    font-size: 96px;
+    font-weight: 590;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    margin-bottom: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+}
+
+.hero-generous h3 {
+    font-size: 64px;
+    font-weight: 400;
+    line-height: 1.0625;
+    letter-spacing: -0.009em;
+    color: #666;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+}
+
+.hero-generous h3 a {
+    color: #ffffff;
+    text-decoration: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    transition: border-color 0.3s ease;
+}
+
+.hero-generous h3 a:hover {
+    border-bottom-color: #ffffff;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+    z-index: 10;
+}
+
+.scroll-indicator svg {
+    width: 24px;
+    height: 24px;
+    stroke: #444;
+    stroke-width: 2;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, 10px); }
+}
+
+/* Second Hero - Browser Mockup */
+.hero-browser {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 100px 50px;
+    z-index: 1;
+}
+
+.browser-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1400px;
+    width: 100%;
+}
+
+.browser-mockup {
+    width: 100%;
+    background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+    border-radius: 16px;
+    padding: 8px;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.browser-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px 10px 0 0;
+}
+
+.browser-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.dot-red { background: #ff5f57; }
+.dot-yellow { background: #ffbd2e; }
+.dot-green { background: #28ca42; }
+
+.browser-content {
+    background: #0f0f0f;
+    padding: 50px 30px;
+    border-radius: 0 0 10px 10px;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.hero-text h2 {
+    font-size: 48px;
+    font-weight: 590;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    margin-bottom: 30px;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+}
+
+.hero-text h2 .italic {
+    font-style: italic;
+    font-weight: 400;
+    color: #888;
+}
+
+.hero-subtitle {
+    font-size: 20px;
+    font-weight: 590;
+    color: #ffffff;
+    margin-bottom: 8px;
+    letter-spacing: -0.022em;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+}
+
+.hero-description {
+    font-size: 16px;
+    color: #666;
+    font-weight: 400;
+    letter-spacing: -0.022em;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+}
+
+/* Projects Section */
+.content-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 100px 50px;
+    position: relative;
+    z-index: 1;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 24px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.project-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.project-title {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.project-arrow {
+    color: #666;
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-arrow {
+    transform: translate(4px, -4px);
+}
+
+.project-description {
+    font-size: 15px;
+    color: #888;
+    line-height: 1.6;
+}
+
+.social-icon:hover {
+    opacity: 1 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav {
+        padding: 20px 24px;
+    }
+
+    .hero-generous {
+        padding: 0 24px;
+    }
+
+    .hero-generous h1,
+    .hero-generous h2 {
+        font-size: 56px;
+    }
+
+    .hero-generous h3 {
+        font-size: 40px;
+    }
+
+    .hero-browser {
+        padding: 60px 24px;
+    }
+
+    .browser-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .browser-content {
+        padding: 40px 24px;
+        min-height: 300px;
+    }
+
+    .hero-text h2 {
+        font-size: 36px;
+    }
+
+    .content-section {
+        padding: 60px 24px;
+    }
+
+    .project-card {
+        padding: 24px;
+    }
+}
+
+/* Cursor */
+.custom-cursor {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: all 0.15s ease;
+    display: none;
+}
+
+@media (hover: hover) {
+    .custom-cursor {
+        display: block;
+    }
+}
